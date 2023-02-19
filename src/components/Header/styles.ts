@@ -95,6 +95,7 @@ export const HeaderSearchItem = styled.div`
   .date {
     position: absolute;
     top: 5.5rem;
+    z-index: 3;
   }
 
   &:focus-within {
@@ -104,6 +105,7 @@ export const HeaderSearchItem = styled.div`
 
 export const OptionsContainer = styled.div`
   position: absolute;
+  z-index: 3;
   top: 5.5rem;
   background-color: #fff;
   color: gray;
