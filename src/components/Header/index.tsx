@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { DateRange } from 'react-date-range'
 import dayjs from 'dayjs'
 
@@ -44,6 +45,9 @@ type Options = {
 }
 
 export function Header({ type }: HeaderProps) {
+  const router = useRouter();
+
+  const [destination, setDestination] = useState('')
   const [openModalDate, setOpenModalDate] = useState(false)
   const [openModalOption, setOpenModalOptions] = useState(false)
   const [options, setOptions] = useState<Options>({
@@ -69,6 +73,10 @@ export function Header({ type }: HeaderProps) {
         ...prev, [nameOption]: operation === 'add' ? options[nameOption] + 1 : options[nameOption] - 1
       }
     })
+  }
+
+  async function handleSearch() {
+    await router.push(`/Hotels?destination=${destination}&date=${JSON.stringify(dateRange)}&options=${JSON.stringify(options)}`)
   }
 
   return (
@@ -116,6 +124,8 @@ export function Header({ type }: HeaderProps) {
                   type="text"
                   placeholder="Onde você está indo?"
                   className="headerSearchInput"
+                  onChange={e => setDestination(e.target.value)}
+                  value={destination}
                 />
               </HeaderSearchItem>
 
@@ -130,6 +140,7 @@ export function Header({ type }: HeaderProps) {
                     moveRangeOnFirstSelection={false}
                     ranges={dateRange}
                     className="date"
+                    minDate={new Date()}
                   />
                 )}
               </HeaderSearchItem>
@@ -188,7 +199,7 @@ export function Header({ type }: HeaderProps) {
               </HeaderSearchItem>
 
               <HeaderSearchItem>
-                <HeaderButton>Search</HeaderButton>
+                <HeaderButton onClick={handleSearch}>Search</HeaderButton>
               </HeaderSearchItem>
             </HeaderSearchContainer>
           </>
