@@ -3,6 +3,7 @@ import { Header } from "../../components/Header";
 import { Featured } from "../../components/Featured";
 import { PropertyList } from "../../components/PropertyList";
 import { FeaturedProperties } from "../../components/FeaturedProperties";
+import { MailList } from "../../components/MailList";
 
 import { MainContainer, SubTitle, SectionContainer } from './styles'
 
@@ -29,6 +30,7 @@ export default function Home() {
           </SubTitle>
 
           <FeaturedProperties />
+          <MailList />
         </SectionContainer>
       </MainContainer>
     </>
