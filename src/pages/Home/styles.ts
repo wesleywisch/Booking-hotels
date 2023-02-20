@@ -10,7 +10,6 @@ export const MainContainer = styled.main`
 
 export const SectionContainer = styled.section`
   width: 100%;
-  max-width: 102.4rem;
   margin: 2rem 0;
 `;
 

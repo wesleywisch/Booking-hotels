@@ -6,6 +6,7 @@ export const PropertyListContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+  margin: 0 auto;
 `;
 
 export const PropertyListItem = styled.div`
